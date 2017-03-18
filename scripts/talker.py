@@ -10,19 +10,19 @@ def talker():
     pub = rospy.Publisher('chatter', SuperAwesome, queue_size=10)
     rospy.init_node('talker', anonymous=True)
 
+    # 'count' stores the total number of message generated and sent via talker.py
     count = 0
     while not rospy.is_shutdown():
-        # customize publish rate
+        # customize publish rate (linear to time)
         publish_rate = (time.time() - start_time) * 200 + 1
         rate = rospy.Rate(publish_rate)
-        hello_str = "SuperAwesome %d" % count
+
         message = SuperAwesome()
         message.data = "Super"
         message.count = count
         
-        count += 1
-        #rospy.loginfo(hello_str)
         pub.publish(message)
+        count += 1
         rate.sleep()
 
 if __name__ == '__main__':
