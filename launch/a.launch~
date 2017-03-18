@@ -1,0 +1,12 @@
+<launch>
+  <group ns="py2py">
+    <node pkg="frequency_test" type="talker.py" name="python_talker"/>
+    <node pkg="frequency_test" type="listener.py" name="python_listener"/>
+  </group>
+
+  <group ns="cpp2cpp">
+    <node pkg="frequency_test" type="talker" name="cpp_talker"/>
+    <node pkg="frequency_test" type="listener" name="cpp_listener"/>
+  </group>
+
+</launch>
